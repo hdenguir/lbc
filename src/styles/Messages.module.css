@@ -1,0 +1,293 @@
+.card {
+  background: #fff;
+  transition: 0.5s;
+  border: 0;
+  margin-bottom: 30px;
+  border-radius: 0.55rem;
+  position: relative;
+  width: 100%;
+  box-shadow: 0 1px 2px 0 rgb(0 0 0 / 10%);
+}
+.chatApp {
+  display: flex;
+  flex-direction: row;
+  border: 1px solid #eaeaea;
+  padding: 10px;
+  border-radius: 10px;
+}
+.peopleList {
+  -moz-transition: 0.5s;
+  -o-transition: 0.5s;
+  -webkit-transition: 0.5s;
+  transition: 0.5s;
+  min-width: 220px;
+}
+.peopleList li {
+  cursor: pointer;
+  margin-bottom: 10px;
+}
+
+.chat {
+  width: 100%;
+  border-left: 1px solid #eaeaea;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.chatListLi {
+  padding: 10px 5px;
+  list-style: none;
+  border-radius: 3px;
+  display: flex;
+  flex-direction: column;
+}
+
+.chatList li:hover {
+  background: #efefef;
+  cursor: pointer;
+}
+
+.chatListActive {
+  background: #efefef;
+  padding: 8px;
+}
+
+.peopleListName {
+  font-size: 15px;
+}
+
+.chatListLiImg {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  position: relative;
+  overflow: hidden;
+  float: left;
+}
+
+.peopleListAbout {
+  float: left;
+  padding-left: 5px;
+}
+
+.peopleListStatus {
+  color: #999;
+  font-size: 13px;
+}
+
+.title {
+  font-size: 18px;
+}
+.fontItalic {
+  font-size: 10px;
+  text-transform: uppercase;
+}
+
+.navLink {
+  color: rgba(255, 255, 255, 0.55);
+  text-decoration: none;
+}
+.navLink:hover {
+  color: #fff;
+}
+
+.chatHeader {
+  padding: 15px 20px;
+  border-bottom: 2px solid #f4f7f6;
+}
+
+.chatHeaderImg {
+  float: left;
+  position: relative;
+  border-radius: 40px;
+  width: 40px;
+  height: 40px;
+  overflow: hidden;
+}
+
+.chatHeaderTitle {
+  display: flex;
+  align-items: center;
+}
+
+.chatAbout {
+  float: left;
+  padding-left: 10px;
+}
+
+.chatHistory {
+  padding: 20px;
+  border-bottom: 2px solid #fff;
+  max-height: 70vh;
+  overflow: auto;
+}
+
+.chatHistory ul {
+  padding: 0;
+}
+
+.chatHistory ul li {
+  list-style: none;
+  margin-bottom: 30px;
+}
+
+.chatHistory ul li:last-child {
+  margin-bottom: 0px;
+}
+
+.messageData {
+  margin-bottom: 15px;
+}
+
+.messageData img {
+  border-radius: 40px;
+  width: 40px;
+}
+
+.messageDataTime {
+  color: #434651;
+}
+
+.message {
+  color: #444;
+  padding: 12px 25px;
+  line-height: 26px;
+  font-size: 16px;
+  border-radius: 7px;
+  display: inline-block;
+  position: relative;
+}
+
+.message:after {
+  bottom: 100%;
+  left: 7%;
+  border: solid transparent;
+  content: ' ';
+  height: 0;
+  width: 0;
+  position: absolute;
+  pointer-events: none;
+  border-bottom-color: #fff;
+  border-width: 10px;
+  margin-left: -20px;
+}
+
+.myMessage {
+  background: #efefef;
+}
+
+.textRight {
+  text-align: right;
+}
+
+.floatRight {
+  float: right;
+}
+
+.myMessage:after {
+  bottom: 100%;
+  left: 30px;
+  border: solid transparent;
+  content: ' ';
+  height: 0;
+  width: 0;
+  position: absolute;
+  pointer-events: none;
+  border-bottom-color: #efefef;
+  border-width: 10px;
+  margin-left: -10px;
+}
+
+.otherMessage {
+  background: #0d6efd;
+  color: #fff;
+  text-align: right;
+}
+
+.otherMessage:after {
+  border-bottom-color: #0d6efd;
+  left: auto;
+  right: 10px;
+}
+
+.chatMessage {
+  padding: 20px 20px 0;
+}
+
+.online,
+.offline,
+.me {
+  margin-right: 2px;
+  font-size: 8px;
+  vertical-align: middle;
+}
+
+.online {
+  color: #86c541;
+}
+
+.offline {
+  color: #e47297;
+}
+
+.me {
+  color: #1d8ecd;
+}
+
+.float-right {
+  float: right;
+}
+
+.clearfix:after {
+  visibility: hidden;
+  display: block;
+  font-size: 0;
+  content: ' ';
+  clear: both;
+  height: 0;
+}
+
+@media only screen and (max-width: 767px) {
+  .peopleList {
+    height: 465px;
+    width: 100%;
+    overflow-x: auto;
+    background: #fff;
+    left: -400px;
+    display: none;
+  }
+
+  .chat {
+    margin: 0;
+  }
+  .chatHeader {
+    border-radius: 0.55rem 0.55rem 0 0;
+  }
+  .chatHistory {
+    height: 300px;
+    overflow-x: auto;
+  }
+}
+
+@media only screen and (min-width: 768px) and (max-width: 992px) {
+  .chatList {
+    height: 650px;
+    overflow-x: auto;
+  }
+  .chatHistory {
+    height: 600px;
+    overflow-x: auto;
+  }
+}
+
+@media only screen and (min-device-width: 768px) and (max-device-width: 1024px) and (orientation: landscape) and (-webkit-min-device-pixel-ratio: 1) {
+  .chatList {
+    height: 480px;
+    overflow-x: auto;
+  }
+  .chatHistory {
+    height: calc(100vh - 350px);
+    overflow-x: auto;
+  }
+}
