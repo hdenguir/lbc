@@ -18,7 +18,7 @@ export const fetcher = async (
       data = await res.json()
     }
 
-    if ([403].includes(res.status)) error = 'error'
+    if ([403, 404].includes(res.status)) error = 'error'
   } catch (error) {
     error = error
   }

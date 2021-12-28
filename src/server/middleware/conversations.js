@@ -44,14 +44,12 @@ module.exports = (req, res, next) => {
     if(action === "login") {
 
       
-        const { nickname, password } = req.body;
+      const { nickname, password } = req.body;
       const user =  db.users.find(user => user.nickname === nickname && user.password === password);
-
-      
-
+    
       if (user) {
-        delete user.password;
-        return res.status(200).json(user)
+        const {password, ...rest} = user || {};
+        return res.status(200).json(rest)
       } else {
         return res.status(404).json({})
       }
@@ -59,7 +57,6 @@ module.exports = (req, res, next) => {
       
     
     if(action === "register") {
-      
       const { nickname , password, token} = req.body;
       const userExist = db.users.find(user => user.nickname === nickname);
       

@@ -1,17 +1,22 @@
-import React, { FC, useState } from 'react'
-import Link from 'next/link'
+import React, { FC, useState, useEffect } from 'react'
 import { useRouter } from 'next/router'
 import { Button, Form, Alert } from 'react-bootstrap'
 import { fetcher } from '../../actions'
 import { IError } from '../../types/error'
 
-const RegisterForm: FC<Props> = () => {
+const LoginForm: FC<Props> = () => {
+  const [action, setAction] = useState<string>('login')
+  const [isLogin, setIsLogin] = useState<boolean>(false)
   const [password, setPassword] = useState<string>('')
   const [nickname, setNickname] = useState<string>('')
   const [error, setError] = useState<IError>({
     message: '',
     variant: 'success',
   })
+
+  useEffect(() => {
+    setAction(!isLogin ? 'login' : 'register')
+  }, [isLogin])
 
   const router = useRouter()
 
@@ -30,14 +35,13 @@ const RegisterForm: FC<Props> = () => {
       body: JSON.stringify({
         nickname,
         password,
-        token: 'xxxx',
-        action: 'register',
+        action,
       }),
     })
 
     if (error) {
       setError({
-        message: 'Something went wrong, try again ...',
+        message: 'The nickname or password is incorrect. Please retry...',
         variant: 'danger',
       })
       return
@@ -46,7 +50,14 @@ const RegisterForm: FC<Props> = () => {
     if (data) {
       setPassword('')
       setNickname('')
-      router.push('/auth/login')
+      setAction('login')
+      setIsLogin(false)
+
+      if (action === 'login') {
+        localStorage.setItem('authUser', JSON.stringify(data))
+        router.push('/messages')
+      } else {
+      }
       return
     }
   }
@@ -83,18 +94,26 @@ const RegisterForm: FC<Props> = () => {
           onChange={(e) => setPassword(e.target.value)}
         />
       </Form.Group>
-      <Form.Group className="mb-3" controlId="formBasicCheckbox">
-        <Link href="/auth/login">
-          <a>Login</a>
-        </Link>
-      </Form.Group>
-      <Button variant="primary" type="submit">
-        Register
+      <Button variant="info" type="submit" className="text-capitalize">
+        {action}
       </Button>
+      <Form.Group className="mb-3" controlId="formBasicCheckbox">
+        <p>
+          {!isLogin ? `Don't have an account ? ` : 'Already registred ? '}{' '}
+          <Button
+            as="a"
+            onClick={() => setIsLogin(!isLogin)}
+            variant="outline-secondary"
+            size="sm"
+          >
+            {!isLogin ? `Register here` : 'Login'}
+          </Button>
+        </p>
+      </Form.Group>
     </Form>
   )
 }
 
 interface Props {}
 
-export default RegisterForm
+export default LoginForm

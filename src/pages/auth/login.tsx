@@ -2,7 +2,7 @@ import React from 'react'
 import { NextPage } from 'next'
 import Head from 'next/head'
 import { Container, Row, Col } from 'react-bootstrap'
-import LoginForm from '../../components/auth/LoginForm'
+import AuthForm from '../../components/auth/AuthForm'
 
 const Login: NextPage<Props> = () => {
   return (
@@ -13,7 +13,7 @@ const Login: NextPage<Props> = () => {
       </Head>
       <Row className="justify-content-md-center">
         <Col lg={6}>
-          <LoginForm />
+          <AuthForm />
         </Col>
       </Row>
     </Container>
